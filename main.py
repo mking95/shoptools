@@ -7,30 +7,6 @@ from lxml import html
 import pandas as pd
 
 
-def main():
-    '''
-    X determine urls to scrape
-    X get data
-    clean data - fix description encodings
-    X store data 
-    Report Data  
-    Email Data
-    '''
-    urls = determine_urls_to_scrape() # Returns [ [url, date string]]
-    
-    cleaner=[ u[0] for u in urls]
-    data=get_data(cleaner)
-    filename = store_data(data)
-
-    # report_data()
-    # email_data()
-    BASE_DIR = os.getcwd()
-    db = os.path.join(BASE_DIR, 'db')
-    save_data()
-
-
-
-
 def dl_image_and_save(list_of_images, website="https://knifekits.com/vcom/"):
     BASE=website
     for img in list_of_images:
@@ -114,6 +90,26 @@ def determine_urls_to_scrape():
 
     
     return urls_to_crawl # [ url, '2020-05-12']
+
+#########################
+# Main
+def main():    
+    import requests
+    import pandas as pd
+    from lxml import html
+    
+    urls = determine_urls_to_scrape()
+    
+    
+    cleaner=[ u[0] for u in urls]
+    data=get_data(cleaner)
+    filename = store_data(data)
+
+    # report_data()
+    # email_data()
+    BASE_DIR = os.getcwd()
+    db = os.path.join(BASE_DIR, 'db')
+    save_data()
 
 
 

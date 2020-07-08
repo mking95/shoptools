@@ -8,3 +8,8 @@ db/
 myDoc.pdf
 assests/
 wslEnv/
+venv/
+.env
+hs/
+ll/
+*.html
